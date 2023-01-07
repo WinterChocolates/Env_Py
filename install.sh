@@ -26,7 +26,3 @@ fi
 if [ ${release} = "ubuntu" ]
 then bash "ubuntu/index.sh"
 fi
-
-if [ ${release} = "debian" ]
-then bash "debian/index.sh"
-fi
