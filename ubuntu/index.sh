@@ -46,7 +46,7 @@ do
 			cd /usr/local/src/git-2.39.0
 			./configure --prefix=/usr/local/git
 			make && make install
-			echo -e '# Git2.9.5\nexport PATH=/usr/local/git/bin:$PATH' >> /etc/profile
+			echo -e '# Git2.39.0\nexport PATH=/usr/local/git/bin:$PATH' >> /etc/profile
 			source /etc/profile
 			git --version
 			rm -rf /usr/local/src/*
@@ -56,7 +56,7 @@ do
 		4)
 			rm -rf /usr/local/git
 			rm -rf /usr/local/bin/git
-			sed -i '/# Git2.9.5/d' /etc/profile
+			sed -i '/# Git2.39.0/d' /etc/profile
 			sed -i '/git/d' /etc/profile
 			source /etc/profile
 			echo "卸载成功"
