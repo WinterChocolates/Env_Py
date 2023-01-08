@@ -12,15 +12,14 @@ do
 	case $num in
 		1)
 			yum remove -y python3*
-			yum update && yum install -y gcc make tar wget zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gdbm-devel db4-devel libpcap-devel xz-devel python-devel libffi-devel
+			yum update -y && yum install -y gcc make tar wget zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gdbm-devel db4-devel libpcap-devel xz-devel python-devel libffi-devel
 			wget -P /usr/local/src https://repo.huaweicloud.com/python/3.9.10/Python-3.9.10.tgz
 			cd /usr/local/src/
 			tar -zxvf Python-3.9.10.tgz
 			cd Python-3.9.10
 			./configure --prefix=/usr/local/python3
 			make && make install
-			ln -s /usr/local/python3/bin/python3.9 /usr/local/bin/python3
-			ln -s /usr/local/python3/bin/pip3.9 /usr/local/bin/pip3
+			echo -e '# python3.9.0\nexport PYTHON_HOME=/usr/local/python3\nexport PATH=$PYTHON_HOME/bin:$PATH' >> /etc/profile
 			source /etc/profile
 			python3 --version
 			pip3 --version
@@ -31,13 +30,15 @@ do
 			rm -rf /usr/local/python3
 			rm -rf /usr/local/bin/python3
 			rm -rf /usr/local/bin/pip3
+			sed -i '/# python3.9.0/d' /etc/profile
+			sed -i '/PYTHON_HOME/d' /etc/profile
 			source /etc/profile
 			echo "卸载成功"
 			break
 			;;
 		3)
-			yum remove -y git
-			yum update && yum install -y gcc make tar wget curl-devel expat-devel gettext-devel openssl-devel zlib-devel
+			yum update -y && yum install -y gcc make tar wget curl-devel expat-devel openssl-devel zlib-devel perl-ExtUtils-MakeMaker
+			yum -y remove git
 			wget -P /usr/local/src https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.9.5.tar.xz
 			cd /usr/local/src/
 			tar -xf git-2.9.5.tar.xz
@@ -59,7 +60,7 @@ do
 			break
 			;;
 		5)
-			yum update && yum install -y epel-release
+			yum update -y && yum install -y epel-release
 			yum config-manager -set-enabled PowerTools
 			yum install -y yum-utils
 			yum-config-manager --add-repo=https://negativo17.org/repos/epel-multimedia.repo
