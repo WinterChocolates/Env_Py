@@ -28,6 +28,7 @@ git clone https://gitee.com/WinterChocolates/software-installation.git
 
 ```shell
 chmod +x software-installation/*
+cd software-installation/
 bash software-installation/install.sh
 ```
 
@@ -94,22 +95,22 @@ bash software-installation/install.sh
 
   > centos的python3.6并不推荐卸载，系统环境也需要使用，推荐使用下面的方法 **（想卸载的自行百度）**
 >
-  
+
   ```shell
   rm -rf /usr/bin/python3
   rm -rf /usr/bin/pip3
-```
-  
+  ```
+
 > 安装需要用的依赖
   >
-  
+
   ```shell
 yum update -y && yum install -y gcc make tar wget zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gdbm-devel db4-devel libpcap-devel xz-devel python-devel libffi-devel
   ```
 
   > 官网速度太慢了，这是使用[华为镜像站](https://mirrors.huaweicloud.com/home)的python编译包
   >
-  
+
   ```shell
   # 下载
   wget https://repo.huaweicloud.com/python/3.9.10/Python-3.9.10.tgz
@@ -121,17 +122,17 @@ yum update -y && yum install -y gcc make tar wget zlib-devel bzip2-devel openssl
   cd Python-3.9.10
 ./configure --prefix=/usr/local/python3
   make && make install
-```
-  
+  ```
+
   > 配置系统环境 **（这里不能使用软链接，原因：poetry会出不来）**
   >
-  
+
   ```shell
 echo -e '# python3.9.10\nexport PYTHON_HOME=/usr/local/python3\nexport PATH=$PYTHON_HOME/bin:$PATH' >> /etc/profile
   
 source /etc/profile
   ```
-  
+
   > 查看python版本
   >
 
@@ -139,7 +140,7 @@ source /etc/profile
   python3 --version
   pip3 --version
   ```
-  
+
   
 
 ### git安装
@@ -200,21 +201,21 @@ source /etc/profile
 - #### CentOS
   > 因为centos能下载到的版本只用1.8，这个版本肯定要升级，首先卸载已经安装的git
 >
-  
+
   ```shell
   yum remove -y git
-```
-  
+  ```
+
 > 安装需要的依赖
   >
-  
+
   ```shell
 yum update -y && yum install -y gcc make tar wget curl-devel expat-devel openssl-devel zlib-devel perl-ExtUtils-MakeMaker
   ```
 
   > 暂且没找到国内源，用的是官方源
   >
-  
+
   ```shell
   # 下载
   wget https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.9.5.tar.xz
@@ -226,11 +227,11 @@ yum update -y && yum install -y gcc make tar wget curl-devel expat-devel openssl
   cd git-2.9.5
 ./configure --prefix=/usr/local/git
   make && make install
-```
-  
+  ```
+
   > 配置git环境（下面方法任选其一）
   >
-  
+
   ```shell
   # 配置系统环境(不推荐会报错)
   echo -e '# Git2.9.5\nexport PATH=/usr/local/git/bin:$PATH' >> /etc/profile.d/git.sh
@@ -239,14 +240,14 @@ yum update -y && yum install -y gcc make tar wget curl-devel expat-devel openssl
   #配置软链接
 ln -s /usr/local/git/bin/git /usr/local/bin/git
   ```
-  
+
   > 查看git版本
   >
-  
+
   ```shell
   git --version
   ```
-  
+
 
 ## 解决内容
 
