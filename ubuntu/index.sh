@@ -20,8 +20,7 @@ do
 			cd Python-3.9.10
 			./configure --prefix=/usr/local/python3
 			make && make install
-			ln -s /usr/local/python3/bin/python3.9 /usr/local/bin/python3
-			ln -s /usr/local/python3/bin/pip3.9 /usr/local/bin/pip3
+			echo -e '# python3.9.10\nexport PYTHON_HOME=/usr/local/python3\nexport PATH=$PYTHON_HOME/bin:$PATH' >> /etc/profile
 			source /etc/profile
 			python3 --version
 			pip3 --version
@@ -32,6 +31,8 @@ do
 			rm -rf /usr/local/python3
 			rm -rf /usr/local/bin/python3
 			rm -rf /usr/local/bin/pip3
+			sed -i '/# python3.9.10/d' /etc/profile
+			sed -i '/PYTHON_HOME/d' /etc/profile
 			source /etc/profile
 			echo "卸载成功"
 			break
@@ -45,7 +46,7 @@ do
 			cd /usr/local/src/git-2.9.5
 			./configure --prefix=/usr/local/git
 			make && make install
-			ln -s /usr/local/git/bin/git /usr/local/bin/git
+			echo -e '# Git2.9.5\nexport PATH=/usr/local/git/bin:$PATH' >> /etc/profile
 			source /etc/profile
 			git --version
 			rm -rf /usr/local/src/*
@@ -55,6 +56,8 @@ do
 		4)
 			rm -rf /usr/local/git
 			rm -rf /usr/local/bin/git
+			sed -i '/# Git2.9.5/d' /etc/profile
+			sed -i '/git/d' /etc/profile
 			source /etc/profile
 			echo "卸载成功"
 			break
