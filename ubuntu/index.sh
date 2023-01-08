@@ -40,10 +40,10 @@ do
 		3)
 			apt remove -y git
 			apt update && apt install -y wget gcc make gzip tar wget libcurl4-gnutls-dev libexpat1-dev gettext libz-dev libssl-dev
-			wget -P /usr/local/src https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.9.5.tar.xz
+			wget -P /usr/local/src https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.39.0.tar.xz
 			cd /usr/local/src/
-			tar -xf git-2.9.5.tar.xz
-			cd /usr/local/src/git-2.9.5
+			tar -xf git-2.39.0.tar.xz
+			cd /usr/local/src/git-2.39.0
 			./configure --prefix=/usr/local/git
 			make && make install
 			echo -e '# Git2.9.5\nexport PATH=/usr/local/git/bin:$PATH' >> /etc/profile

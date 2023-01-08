@@ -39,10 +39,10 @@ do
 		3)
 			yum update -y && yum install -y gcc make tar wget curl-devel expat-devel openssl-devel zlib-devel perl-ExtUtils-MakeMaker
 			yum -y remove git
-			wget -P /usr/local/src https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.9.5.tar.xz
+			wget -P /usr/local/src https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.39.0.tar.xz
 			cd /usr/local/src/
-			tar -xf git-2.9.5.tar.xz
-			cd /usr/local/src/git-2.9.5
+			tar -xf git-2.39.0.tar.xz
+			cd /usr/local/src/git-2.39.0
 			./configure --prefix=/usr/local/git
 			make && make install
 			ln -s /usr/local/git/bin/git /usr/local/bin/git
