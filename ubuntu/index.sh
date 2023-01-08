@@ -11,7 +11,8 @@ while read -p "请输入以上序号：" num
 do
 	case $num in
 		1)
-			apt remove -y python3*
+			rm -rf /usr/bin/python3
+			rm -rf /usr/bin/pip3
 			apt update && apt install -y wget gcc tar make build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev libbz2-dev liblzma-dev sqlite3 libsqlite3-dev tk-dev uuid-dev libgdbm-compat-dev
 			wget -P /usr/local/src https://repo.huaweicloud.com/python/3.9.10/Python-3.9.10.tgz
 			cd /usr/local/src/
