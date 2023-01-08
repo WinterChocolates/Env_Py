@@ -146,7 +146,7 @@ source /etc/profile
 
 - #### Ubuntu
 
-  > 因为Ubuntu能下载到的版本只用2.17，这个版本推荐升级，首先卸载已经安装的git
+  > 因为Ubuntu能下载到的版本只有2.17，这个版本推荐升级，首先卸载已经安装的git
   >
 
   ```shell
