@@ -121,16 +121,16 @@ yum update -y && yum install -y gcc make tar wget zlib-devel bzip2-devel openssl
 > 官网速度太慢了，这是使用[华为镜像站](https://mirrors.huaweicloud.com/home)的python编译包
 
 ```shell
-  # 下载
-  wget https://repo.huaweicloud.com/python/3.9.10/Python-3.9.10.tgz
-  
-  # 解压
-  tar -xf Python-3.9.10.tgz
-  
-  # 进入目录并编译
-  cd Python-3.9.10
+# 下载
+wget https://repo.huaweicloud.com/python/3.9.10/Python-3.9.10.tgz
+
+# 解压
+tar -xf Python-3.9.10.tgz
+
+# 进入目录并编译
+cd Python-3.9.10
 ./configure --prefix=/usr/local/python3
-  make && make install
+make && make install
 ```
 
 > 配置系统环境 **（这里不能使用软链接，原因：poetry会出不来）**
@@ -144,8 +144,8 @@ source /etc/profile
 > 查看python版本
 
 ```shell
-  python3 --version
-  pip3 --version
+python3 --version
+pip3 --version
 ```
 
 > 安装完成后删除压缩包和文件夹
@@ -168,15 +168,15 @@ rm -rf Python-3.9.10
 >
 
   ```shell
-  apt-get install -y software-properties-common && aptget update
+apt-get install -y software-properties-common && aptget update
   ```
 
 > 安装步骤
 >
 
   ```shell
-  add-apt-repository ppa:git-core/ppa
-  apt update && apt install -y git
+add-apt-repository ppa:git-core/ppa
+apt update && apt install -y git
   ```
 
   
@@ -187,7 +187,7 @@ rm -rf Python-3.9.10
   >
 
   ```shell
-  apt remove -y git
+apt remove -y git
   ```
 
   > 安装需要的依赖
@@ -201,42 +201,42 @@ rm -rf Python-3.9.10
   >
 
   ```shell
-  # 下载
-  wget https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.39.0.tar.xz
+# 下载
+wget https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.39.0.tar.xz
   
-  # 解压
-tar -xf git-2.9.5.tar.xz
+# 解压
+tar -xf git-2.39.0.tar.xz
   
-  # 进入目录并编译
-cd git-2.9.5
-  ./configure --prefix=/usr/local/git
-  make && make install
+# 进入目录并编译
+cd git-2.39.0
+./configure --prefix=/usr/local/git
+make && make install
   ```
 
   > 配置git环境（下面方法任选其一）
   >
 
   ```shell
-  # 配置系统环境
-  echo -e '# Git2.9.5\nexport PATH=/usr/local/git/bin:$PATH' >> /etc/profile
-  source /etc/profile
+# 配置系统环境
+echo -e '# Git2.39.0\nexport PATH=/usr/local/git/bin:$PATH' >> /etc/profile
+source /etc/profile
   
-  #配置软链接
-  ln -s /usr/local/git/bin/git /usr/local/bin/git
+#配置软链接
+ln -s /usr/local/git/bin/git /usr/local/bin/git
   ```
 
   > 查看git版本
   >
 
   ```shell
-  git --version
+git --version
   ```
   > 安装完成后删除压缩包和文件夹
 
   ```shell
-  cd ..
-  rm -rf git-2.9.5.tar.xz
-  rm -rf git-2.9.5
+cd ..
+rm -rf git-2.39.0.tar.xz
+rm -rf git-2.39.0
   ```
 
   
@@ -274,7 +274,7 @@ make && make install
 > 配置git环境（下面方法任选其一）
 
 ```shell
-# 配置系统环境(不推荐会报错)
+# 配置系统环境
 echo -e '# Git2.9.5\nexport PATH=/usr/local/git/bin:$PATH' >> /etc/profile.d/git.sh
 source /etc/profile
 
