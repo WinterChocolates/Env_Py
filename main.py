@@ -1,6 +1,5 @@
 import os
 import requests
-import time
 
 # 主目录获取
 home = os.environ.get('HOME')
@@ -12,7 +11,7 @@ home = os.environ.get('HOME')
 
 def net_status_code(url):
     try:
-        r = requests.get(url, timeout=10)
+        r = requests.get(url, timeout=5)
         if r.status_code == 200:
             return 200
         else:
@@ -30,8 +29,9 @@ def logo():
 def nvm():
     nvm_mirror='export NVM_NODEJS_ORG_MIRROR=https://npmmirror.com/mirrors/node/'
     os.system("wget -qO- https://mirror.ghproxy.com/https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | sed 's|https://raw.githubusercontent.com/|https://mirror.ghproxy.com/https://raw.githubusercontent.com/|g' | bash")
-    with open (f'{home}/.bashrc','w') as f:
-        f.write(nvm_mirror)
+    if net_status_code("https://nodejs.org/") != 200:
+        with open (f'{home}/.bashrc','w') as f:
+            f.write(nvm_mirror)
     print("环境变量已添加到当前用户目录下的./bashrc. 请运行 'source ~/.bashrc' 使更改生效。")
 
 
@@ -53,4 +53,5 @@ if __name__ == "__main__":
     #     else:
     #         nvm()
     # ping_www("https://nodejs.org/")
-    ping_www("https://www.baidu.com")
+    r = net_status_code("https://nodejs.org/")
+    print(r)
