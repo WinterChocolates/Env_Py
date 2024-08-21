@@ -18,7 +18,7 @@ def net_status_code(url):
             return r.status_code
     except requests.exceptions.Timeout:
         return False
-    except requests.exceptions.RequestException as e:
+    except requests.exceptions.RequestException:
         return False
         
 
