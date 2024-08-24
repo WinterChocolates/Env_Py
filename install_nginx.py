@@ -49,17 +49,17 @@ def disposition_nginx():
         print(f"Nginx{NGINX_VERSION}解压完成.")
 
         print("安装开发工具包中...")
-        os.system('dnf group install "Development Tools"')
+        os.system('dnf group install "Development Tools" -y')
         print("开发工具包安装完成.")
 
         print("安装Nginx必要库中...")
-        os.system("dnf install openssl openssl-devel pcre pcre-devel zlib zlib-devel")
+        os.system("dnf install openssl openssl-devel pcre pcre-devel zlib zlib-devel -y")
         print("必要库安装完成.")
 
         source_dir = f"nginx-{NGINX_VERSION}"
         os.chdir(source_dir)
         print(f"在{os.getcwd()}中配置Nginx {NGINX_VERSION}...")
-        os.system("./configure --prefix=/usr/local/nginx --with-http_ssl_module --with-http_gzip_static_module --with-http_rewrite_module --with-http_stub_status_module --with-pcre")
+        os.system("./configure --prefix=/usr/local/nginx --with-http_ssl_module --with-http_gzip_static_module --with-http_stub_status_module --with-pcre")
 
         print(f"编译Nginx {NGINX_VERSION}")
         os.system("make")
