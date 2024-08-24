@@ -17,13 +17,10 @@ if not os.path.exists(download_Dir):
 def download_nginx(base_urls: list, nginx_version: str, download_dir: str):
     for base_url in base_urls:
         nginx_url = f"{base_url}nginx-{nginx_version}.tar.gz"
-        source_file = os.path.join(
-            download_dir, f"nginx-{nginx_version}.tar.gz")
+        source_file = os.path.join(download_dir, f"nginx-{nginx_version}.tar.gz")
 
-        print(f"""
-        正在尝试从 {nginx_url} 
-        下载{source_file}中...
-        """)
+        print(f"正在尝试从 {nginx_url} 下载")
+        print(f"{source_file} 中...")
         print("")
         response = requests.get(nginx_url, timeout=5)
 
@@ -33,10 +30,9 @@ def download_nginx(base_urls: list, nginx_version: str, download_dir: str):
             print(f"Nginx {nginx_version}下载完成。保存到{source_file}")
             return source_file
         else:
-            print(f"""
-            从{nginx_url}(HTTP{response.status_code})下载失败...
-            正在尝试下一个URL...
-            """)
+            print(f"从{nginx_url}(HTTP{response.status_code})下载失败...")
+            print("正在尝试下一个URL...")
+
     raise Exception(f"从所有提供的url下载Nginx {nginx_version}失败。")
 
 
@@ -53,7 +49,8 @@ def disposition_nginx():
         print("开发工具包安装完成.")
 
         print("安装Nginx必要库中...")
-        os.system("dnf install openssl openssl-devel pcre pcre-devel zlib zlib-devel -y")
+        os.system(
+            "dnf install openssl openssl-devel pcre pcre-devel zlib zlib-devel -y")
         print("必要库安装完成.")
 
         source_dir = os.path.join(download_Dir, f"nginx-{NGINX_VERSION}")
@@ -69,8 +66,9 @@ def disposition_nginx():
         os.chdir("..")
     except Exception as e:
         return e
-    
+
     print(f"完成Nginx {NGINX_VERSION}的安装.")
+
 
 if __name__ == "__main__":
     disposition_nginx()
