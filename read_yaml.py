@@ -13,4 +13,4 @@ def read_yaml_file():
 
 
 if __name__ == "__main__":
-    print(read_yaml_file())
+    print(read_yaml_file().get("nginx"))
