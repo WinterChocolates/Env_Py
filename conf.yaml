@@ -1,0 +1,7 @@
+nginx:
+  bin: "/usr/local/nginx"
+  url:
+    - "https://mirrors.huaweicloud.com/nginx/"
+    - "https://nginx.org/download/"
+  version:
+    - 1.24.0
