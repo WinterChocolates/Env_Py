@@ -1,6 +1,6 @@
 import os
-import requests
 import tarfile
+import requests
 
 base_Urls = [
     "https://mirrors.huaweicloud.com/nginx/",
@@ -8,6 +8,8 @@ base_Urls = [
 ]
 
 NGINX_VERSION = "1.24.0"
+
+install_file = "/usr/local/nginx"
 
 download_Dir = os.path.expanduser("~/downloads")
 if not os.path.exists(download_Dir):
@@ -55,7 +57,7 @@ def disposition_nginx():
         source_dir = os.path.join(download_Dir, f"nginx-{NGINX_VERSION}")
         os.chdir(source_dir)
         print(f"在{os.getcwd()}中配置Nginx {NGINX_VERSION}...")
-        os.system("./configure --prefix=/usr/local/nginx --with-http_ssl_module --with-http_gzip_static_module --with-http_stub_status_module --with-pcre")
+        os.system(f"./configure --prefix={install_file} --with-http_ssl_module --with-http_gzip_static_module --with-http_stub_status_module --with-pcre")
 
         print(f"编译Nginx {NGINX_VERSION}")
         os.system("make")
@@ -67,6 +69,7 @@ def disposition_nginx():
         return e
 
     print(f"完成Nginx {NGINX_VERSION}的安装.")
+    print(f"安装目录为：{install_file}")
 
 
 if __name__ == "__main__":
