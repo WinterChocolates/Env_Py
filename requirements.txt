@@ -1,0 +1,4 @@
+# mirrors
+-i https://mirrors.ustc.edu.cn/pypi/simple
+
+requests~=2.32.2
