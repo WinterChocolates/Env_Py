@@ -69,5 +69,5 @@ def disposition_nginx(conf: dict):
 
 
 if __name__ == "__main__":
-    # disposition_nginx()
-    print(conf)
+    disposition_nginx()
+    # print(conf)
