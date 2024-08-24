@@ -57,5 +57,6 @@ class Config:
 
 
 if __name__ == "__main__":
-    config = Config(software="nginx")
+    software = input("输入需要安装的软件:")
+    config = Config(software=software)
     print(config.get_bin())
