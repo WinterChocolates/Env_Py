@@ -5,4 +5,5 @@ dependencies:
   - python=3.11.9
   - pip
   - pip:
+      - -i https://mirrors.ustc.edu.cn/pypi/simple
       - requests~=2.32.2
