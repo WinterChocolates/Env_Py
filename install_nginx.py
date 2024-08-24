@@ -1,17 +1,17 @@
 import os
 import tarfile
 import requests
-from read_yaml import read_yaml_file
+from read_yaml import Config
 
 download_dir = os.path.expanduser("~/downloads")
 if not os.path.exists(download_dir):
     os.makedirs(download_dir)
 
-config = read_yaml_file()
-app = config.get("nginx")
-base_urls = app.get("url")
-nginx_version = app.get("version")
-nginx_bin = app.get("bin")
+software = input("输入需要安装的软件:")
+config = Config(software=software)
+base_urls = Config.get_url()
+nginx_version = Config.get_version()
+nginx_bin = Config.get_bin()
 
 
 def download_nginx(base_urls: list, nginx_version: str):
