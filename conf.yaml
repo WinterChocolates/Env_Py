@@ -4,3 +4,10 @@ nginx:
     - "https://mirrors.huaweicloud.com/nginx/"
     - "https://nginx.org/download/"
   version: "1.24.0"
+
+python:
+  bin: "/usr/local/python"
+  url:
+    - "https://mirrors.huaweicloud.com/python/"
+    - "https://mirrors.nju.edu.cn/python/"
+  version: "3.11.9"
