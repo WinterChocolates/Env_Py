@@ -71,3 +71,6 @@ def disposition_nginx():
         return e
     
     print(f"完成Nginx {NGINX_VERSION}的安装.")
+
+if __name__ == "__main__":
+    disposition_nginx()
