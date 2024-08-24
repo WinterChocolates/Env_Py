@@ -9,9 +9,9 @@ if not os.path.exists(download_dir):
 
 software = input("输入需要安装的软件:")
 config = Config(software=software)
-base_urls = Config.get_url()
-nginx_version = Config.get_version()
-nginx_bin = Config.get_bin()
+base_urls = config.get_url()
+nginx_version = config.get_version()
+nginx_bin = config.get_bin()
 
 
 def download_nginx(base_urls: list, nginx_version: str):
@@ -57,7 +57,9 @@ def disposition_nginx():
         source_dir = os.path.join(download_dir, f"nginx-{nginx_version}")
         os.chdir(source_dir)
         print(f"在{os.getcwd()}中配置Nginx {nginx_version}...")
-        os.system(f"./configure --prefix={nginx_bin} --with-http_ssl_module --with-http_gzip_static_module --with-http_stub_status_module --with-pcre")
+        os.system(
+            f"./configure --prefix={nginx_bin} --with-http_ssl_module --with-http_gzip_static_module --with-http_stub_status_module --with-pcre"
+        )
 
         print(f"编译Nginx {nginx_version}")
         os.system("make")
