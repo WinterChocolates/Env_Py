@@ -1,0 +1,8 @@
+name: Python311
+channels:
+  - defaults
+dependencies:
+  - python=3.11.9
+  - pip
+  - pip:
+      - requests~=2.32.2
