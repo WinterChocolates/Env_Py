@@ -70,7 +70,7 @@ def library(install: str):
     print("开发工具包安装完成.", end="\n")
 
     print(f"安装{base_name}必要库中...")
-    os.systesm(f"dnf install {install}")
+    os.system(f"dnf install {install}")
     print("必要库安装完成.", end="\n")
 
 
