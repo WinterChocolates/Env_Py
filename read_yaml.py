@@ -32,9 +32,13 @@ class Config:
         return None
 
     def get_urls(self):
-        """获取指定软件的 'url' 属性。"""
+        """获取指定软件的 'url' 属性。如果软件为 'python'，在 URL 后添加版本号。"""
         if self.config:
-            return self.config.get(self.software, {}).get('url', [])
+            urls = self.config.get(self.software, {}).get('url', [])
+            if self.software.lower() == "python" and self.version:
+                # 在每个 URL 后附加版本号
+                urls = [f"{url}{self.version}/" for url in urls]
+            return urls
         return []
 
     def get_versions(self):
@@ -82,4 +86,5 @@ if __name__ == "__main__":
     version = input("输入版本号: ")
     config = Config(software=software, version=version)
     print("软件版本:", config.get_versions())
+    print("下载地址:", config.get_urls())
     print("完整的软件包文件名:", config.get_archive())
