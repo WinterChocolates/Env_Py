@@ -99,6 +99,7 @@ def config_env(name: str, env: str):
         with open(profile_file, 'w', encoding='utf-8') as f:
             f.write(env)
         print(f"{name} 环境变量已写入 {profile_file}")
+        print("请使用 source /etc/profile 让环境变量生效。")
 
     except Exception as e:
         print(f"写入 {profile_file} 失败：{e}")
