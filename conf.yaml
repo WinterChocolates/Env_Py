@@ -13,15 +13,17 @@ nginx:
   archive: "nginx-{version}.tar.gz"
   env: "PATH=/usr/local/nginx/sbin:$PATH"
 
-# python:
-#   name: "Python"
-#   bin: "/usr/local/python3"
-#   url:
-#     - "https://mirrors.huaweicloud.com/python/"
-#     - "https://mirrors.nju.edu.cn/python/"
-#   version: 
-#     - "3.11.9"
-#     - "3.10.11"
-#   install: "zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gdbm-devel xz-devel libffi-devel"
-#   module: "--enable-optimizations"
-#   package: "xz"
+python:
+  name: "Python"
+  bin: "/usr/local/python3"
+  url:
+    - "https://mirrors.huaweicloud.com/python/"
+    - "https://mirrors.nju.edu.cn/python/"
+  version: 
+    - "3.11.9"
+    - "3.10.11"
+  install: "zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gdbm-devel xz-devel libffi-devel"
+  module: "--enable-optimizations"
+  package: "xz"
+  archive: "Python-{version}.tar.xz"
+  env: "PATH=/usr/local/python3/bin:$PATH"
