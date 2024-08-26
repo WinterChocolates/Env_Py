@@ -75,7 +75,7 @@ def library(install: str):
 
 
 def setup(name: str, file: str, module: str):
-    source_dir = os.path.join(download_dir, f"{name}-", file)
+    source_dir = os.path.join(download_dir, file)
     os.chdir(source_dir)
     print(f"在{os.getcwd()}中配置{name} {version}...")
     os.system(f"./configure --prefix={module}")
