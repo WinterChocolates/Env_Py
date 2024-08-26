@@ -74,11 +74,11 @@ def library(install: str):
     print("必要库安装完成.", end="\n")
 
 
-def setup(name: str, file: str, module: str):
+def setup(name: str, file: str, bin: str, module: str):
     source_dir = os.path.join(download_dir, file)
     os.chdir(source_dir)
     print(f"在{os.getcwd()}中配置{name} {version}...")
-    os.system(f"./configure --prefix={module}")
+    os.system(f"./configure --prefix={bin} {module}")
 
     print(f"编译{name} {version} ...")
     os.system("make")
@@ -114,7 +114,7 @@ def main():
         decompression(base_package)
 
         # 编译和安装
-        setup(base_name, base_file, base_bin)
+        setup(base_name, base_file, base_bin, base_module)
 
         # 配置环境变量
         config_env(base_name, base_env)
