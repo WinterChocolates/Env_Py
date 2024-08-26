@@ -76,6 +76,7 @@ class Config:
             return self.config.get(self.software, {}).get('env')
         return None
 
+
 if __name__ == "__main__":
     software = input("输入需要安装的软件: ")
     version = input("输入版本号: ")
