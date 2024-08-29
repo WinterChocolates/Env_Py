@@ -112,11 +112,11 @@ def main():
         library(base_install)
 
         # 解压软件包
-        if base_name.lower() != "go":
-            decompression(base_package)
+        decompression(base_package)
 
         # 编译和安装
-        setup(base_name, base_file, base_bin, base_module)
+        if base_name.lower() != "go":
+            setup(base_name, base_file, base_bin, base_module)
 
         # 配置环境变量
         config_env(base_name, base_env)
