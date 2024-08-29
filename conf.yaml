@@ -36,8 +36,8 @@ go:
   name: "go"
   bin: "/usr/local/go"
   url:
-    - "https://mirrors.aliyun.com/golang/"
     - "https://golang.google.cn/dl/"
+    - "https://mirrors.aliyun.com/golang/"
   version:
     - "1.23.0"
     - "1.22.5"
