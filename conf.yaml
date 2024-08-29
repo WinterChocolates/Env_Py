@@ -11,7 +11,8 @@ nginx:
   module: "-with-http_ssl_module --with-http_gzip_static_module --with-http_stub_status_module --with-pcre"
   package: "gz"
   archive: "nginx-{version}.tar.gz"
-  env: "PATH=/usr/local/nginx/sbin:$PATH"
+  env:
+   - "PATH=/usr/local/nginx/sbin:$PATH"
 
 python:
   name: "Python"
@@ -26,4 +27,24 @@ python:
   module: "--enable-optimizations"
   package: "xz"
   archive: "Python-{version}.tar.xz"
-  env: "PATH=/usr/local/python3/bin:$PATH"
+  env:
+    - "PATH=/usr/local/python3/bin:$PATH"
+
+go:
+  # https://mirrors.aliyun.com/golang/go1.23.0.linux-amd64.tar.gz
+  # https://golang.google.cn/dl/go1.23.0.linux-amd64.tar.gz
+  name: "go"
+  bin: "/usr/local/go"
+  url:
+    - "https://mirrors.aliyun.com/golang/"
+    - "https://golang.google.cn/dl/"
+  version:
+    - "1.23.0"
+    - "1.22.5"
+  package: "gz"
+  archive: "go{version}.linux-amd64.tar.gz"
+  env: 
+    - "PATH=/usr/local/go/bin:$PATH"
+    - "GOPATH=$HOME/Go"
+    - "GO111MODULE=on"
+    - "GOPROXY=https://goproxy.cn,direct"
