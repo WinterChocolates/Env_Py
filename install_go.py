@@ -78,7 +78,7 @@ def config_env(name: str, env: str):
 def main():
     try:
         # 解压软件包
-        decompression(base_package)
+        decompression(base_package, base_bin)
 
         # 配置环境变量
         config_env(base_name, base_env)
