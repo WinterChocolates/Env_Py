@@ -33,7 +33,7 @@ print(base_file)
 base_env = config.get_env()
 
 
-def download(urls: list, archive: str):
+def download(urls: list, name: str, archive: str):
     """ 压缩包下载 """
     for base_url in urls:
         url = f"{base_url}{archive}"
@@ -56,7 +56,7 @@ def download(urls: list, archive: str):
 
 def decompression(package: str):
     """ 压缩包解压 """
-    file = download(base_urls, base_archive)
+    file = download(base_urls, base_name, base_archive)
     print(f"解压{file}...")
     with tarfile.open(file, f'r:{package}') as tar:
         tar.extractall(path=download_dir)
@@ -115,8 +115,7 @@ def main():
         decompression(base_package)
 
         # 编译和安装
-        if base_name.lower() != "go":
-            setup(base_name, base_file, base_bin, base_module)
+        setup(base_name, base_file, base_bin, base_module)
 
         # 配置环境变量
         config_env(base_name, base_env)
