@@ -1,4 +1,5 @@
 import os
+import shutil
 import tarfile
 import requests
 from read_yaml import Config
@@ -58,8 +59,15 @@ def decompression(package: str, bin: str):
     file = download(base_urls, base_name, base_archive)
     print(f"解压{file}...")
     with tarfile.open(file, f'r:{package}') as tar:
-        tar.extractall(path=bin)
+        tar.extractall(path=download_dir)
     print(f"{base_name} {version} 解压完成.", end="\n")
+
+
+def move_dir(dir: str, source_dir: str = "/usr/local"):
+    tar_dir = os.path.join(download_dir, os.path.basename(dir))
+    if os.path.exists(dir):
+        shutil.rmtree(dir)
+    shutil.move(tar_dir, source_dir)
 
 
 def config_env(name: str, env: str):
@@ -80,6 +88,9 @@ def main():
     try:
         # 解压软件包
         decompression(base_package, base_bin)
+        
+        # 剪切目录
+        move_dir(base_bin)
 
         # 配置环境变量
         config_env(base_name, base_env)
