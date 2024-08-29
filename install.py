@@ -97,7 +97,8 @@ def config_env(name: str, env: str):
     profile_file = f"/etc/profile.d/{name}.sh"
     try:
         with open(profile_file, 'w', encoding='utf-8') as f:
-            f.write(f"export {env}")
+            for e in env:
+                f.write(f"export {e}")
         print(f"{name} 环境变量已写入 {profile_file}")
         print("请使用 source /etc/profile 让环境变量生效。")
 
