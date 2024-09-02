@@ -54,7 +54,7 @@ def download(urls: list, name: str, archive: str):
     raise Exception(f"从所有提供的url下载{name} {version}失败。", end="\n")
 
 
-def decompression(package: str, bin: str):
+def decompression(package: str):
     """ 压缩包解压 """
     file = download(base_urls, base_name, base_archive)
     print(f"解压{file}...")
@@ -64,6 +64,7 @@ def decompression(package: str, bin: str):
 
 
 def move_dir(dir: str, source_dir: str = "/usr/local"):
+    """ 移动目录 """
     tar_dir = os.path.join(download_dir, os.path.basename(dir))
     if os.path.exists(dir):
         shutil.rmtree(dir)
