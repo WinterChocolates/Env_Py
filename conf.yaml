@@ -8,7 +8,7 @@ nginx:
     - "1.25.0"
     - "1.24.0"
   library: "openssl openssl-devel pcre pcre-devel zlib zlib-devel"
-  module: "-with-http_ssl_module --with-http_gzip_static_module --with-http_stub_status_module --with-pcre"
+  module: "--with-http_ssl_module --with-http_gzip_static_module --with-http_stub_status_module --with-pcre"
   package: "gz"
   archive: "nginx-{version}.tar.gz"
   env:
