@@ -57,8 +57,9 @@ def move_dir(config: Config, source_dir: str = "/usr/local"):
 # 编译软件
 def compile(config: Config):
     ''' 编译软件 '''
-    source_dir = os.path.join(download_dir, config.get_bin())
-    os.chdir(source_dir)
+    source_dir = config.get_archive().replace(f".tar.{config.get_package()}", "")
+    dir = os.path.join(download_dir, source_dir)
+    os.chdir(dir)
     print(f"在{os.getcwd()}中配置{config.app} {config.version}...")
     os.system(f"./configure --prefix={config.get_bin()} {config.get_module()}")
 
