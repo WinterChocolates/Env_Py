@@ -80,10 +80,10 @@ def library(config: Config):
 # 编写配置文件
 def config_env(config: Config):
     ''' 编写配置文件 '''
-    profile_file = f"/etc/profile.d/{config.get_app()}.sh"
+    profile_file = f"/etc/profile.d/{config.app}.sh"
     with open(profile_file, 'w', encoding='utf-8') as f:
         for e in config.get_env():
-            f.write(f"export {e}")
+            f.write(f"export {e}\n")
     print(f"{config.app} 环境变量已写入 {profile_file}")
     print("请使用 source /etc/profile 让环境变量生效。")
 
@@ -95,6 +95,7 @@ def main():
     user_input = input("请输入要安装的软件名称(格式:软件名称 版本号):")
     name, version = user_input.split()
     config = Config(app=name.lower(), version=version)
+    print(config.app, config.version)
 
     try:
         # 开发工具与必要软件安装
@@ -103,10 +104,15 @@ def main():
         # 解压软件包
         decompression(config)
 
-        if name == "go":
+        if config.app == "go":
+            print('执行')
+            print(config.app, config.version)
             # 移动目录
             move_dir(config)
-        if name == "python":
+        if config.app == "python":
+            print('执行')
+            print(config.app, config.version)
+            # 编译软件
             compile(config)
 
         # 编写配置文件
