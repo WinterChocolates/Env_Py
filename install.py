@@ -5,8 +5,9 @@ import requests
 from read import Config
 
 download_dir = os.path.expanduser("~/downloads")
-if not os.path.exists(download_dir):
-    os.makedirs(download_dir)
+if os.path.exists(download_dir):  # 如果目录存在
+    shutil.rmtree(download_dir)  # 删除目录及其内容
+os.makedirs(download_dir)  # 重新生成目录
 
 
 # 下载软件
