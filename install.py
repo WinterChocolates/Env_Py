@@ -47,7 +47,7 @@ def decompression(config: Config):
 # 移动目录
 def move_dir(config: Config, source_dir: str = "/usr/local"):
     ''' 移动目录 '''
-    dir = os.path.join(download_dir, os.path.basename(config.get_dir()))
+    dir = os.path.join(download_dir, os.path.basename(config.get_bin()))
     if os.path.exists(dir):
         shutil.rmtree(dir)
     shutil.move(dir, source_dir)
@@ -57,7 +57,7 @@ def move_dir(config: Config, source_dir: str = "/usr/local"):
 # 编译软件
 def compile(config: Config):
     ''' 编译软件 '''
-    source_dir = os.path.join(download_dir, config.get_dir())
+    source_dir = os.path.join(download_dir, config.get_bin())
     os.chdir(source_dir)
     print(f"在{os.getcwd()}中配置{config.app} {config.version}...")
     os.system(f"./configure --prefix={config.get_bin()} {config.get_module()}")
