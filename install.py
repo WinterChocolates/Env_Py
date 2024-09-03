@@ -109,7 +109,7 @@ def main():
             print(config.app, config.version)
             # 移动目录
             move_dir(config)
-        if config.app == "python":
+        elif config.app == "python":
             print('执行')
             print(config.app, config.version)
             # 编译软件
