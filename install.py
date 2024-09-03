@@ -57,7 +57,7 @@ def move_dir(config: Config, source_dir: str = "/usr/local"):
 # 编译软件
 def compile(config: Config):
     ''' 编译软件 '''
-    try:  # 添加异常处理
+    try:
         source_dir = config.get_archive().replace(f".tar.{config.get_package()}", "")
         dir = os.path.join(download_dir, source_dir)
         os.chdir(dir)
@@ -66,6 +66,9 @@ def compile(config: Config):
 
         print(f"编译{config.app} {config.version} ...")
         os.system("make")
+        
+        print(f"安装{config.app} {config.version} ...")
+        os.system("make install")
     except Exception as e:  # 捕获异常并打印错误信息
         print(f"编译{config.app} {config.version} 失败：{e}")
 
