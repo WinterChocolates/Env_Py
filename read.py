@@ -58,7 +58,7 @@ class Config:
 
     def get_library(self):
         ''' 获取指定软件的依赖包 '''
-        return self.get_attribute('install')
+        return self.get_attribute('library')
 
     def get_module(self):
         ''' 获取指定软件的编译参数 '''
