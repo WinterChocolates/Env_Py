@@ -18,7 +18,8 @@ class Config:
                 name = self.get_name()
                 version = self.get_version()
                 print(f"{name} 版本有：", end="")
-                print(f"{', '.join(v for v in version) if version else '无版本信息'}")
+                print(
+                    f"{', '.join(v for v in version) if version else '无版本信息'}")
                 print("========================================")
 
     def read_yaml(self):
