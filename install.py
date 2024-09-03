@@ -57,14 +57,17 @@ def move_dir(config: Config, source_dir: str = "/usr/local"):
 # 编译软件
 def compile(config: Config):
     ''' 编译软件 '''
-    source_dir = config.get_archive().replace(f".tar.{config.get_package()}", "")
-    dir = os.path.join(download_dir, source_dir)
-    os.chdir(dir)
-    print(f"在{os.getcwd()}中配置{config.app} {config.version}...")
-    os.system(f"./configure --prefix={config.get_bin()} {config.get_module()}")
+    try:  # 添加异常处理
+        source_dir = config.get_archive().replace(f".tar.{config.get_package()}", "")
+        dir = os.path.join(download_dir, source_dir)
+        os.chdir(dir)
+        print(f"在{os.getcwd()}中配置{config.app} {config.version}...")
+        os.system(f"./configure --prefix={config.get_bin()} {config.get_module()}")
 
-    print(f"编译{config.app} {config.version} ...")
-    os.system("make")
+        print(f"编译{config.app} {config.version} ...")
+        os.system("make")
+    except Exception as e:  # 捕获异常并打印错误信息
+        print(f"编译{config.app} {config.version} 失败：{e}")
 
 
 # 开发工具与必要软件安装
