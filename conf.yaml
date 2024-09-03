@@ -7,7 +7,7 @@ nginx:
   version: 
     - "1.25.0"
     - "1.24.0"
-  install: "openssl openssl-devel pcre pcre-devel zlib zlib-devel"
+  library: "openssl openssl-devel pcre pcre-devel zlib zlib-devel"
   module: "-with-http_ssl_module --with-http_gzip_static_module --with-http_stub_status_module --with-pcre"
   package: "gz"
   archive: "nginx-{version}.tar.gz"
@@ -23,7 +23,7 @@ python:
   version: 
     - "3.11.9"
     - "3.10.11"
-  install: "zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gdbm-devel xz-devel libffi-devel"
+  library: "zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gdbm-devel xz-devel libffi-devel"
   module: "--enable-optimizations"
   package: "xz"
   archive: "Python-{version}.tar.xz"
