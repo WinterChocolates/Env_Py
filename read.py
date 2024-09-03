@@ -45,7 +45,7 @@ class Config:
         ''' 获取指定软件的安装目录 '''
         return self.get_attribute('bin')
 
-    def get_url(self):
+    def get_urls(self):
         ''' 获取指定软件的下载地址 '''
         urls = self.get_attribute('url')
         if self.app.lower() == 'python' and self.version:
