@@ -89,7 +89,6 @@ def main():
     try:
         # 解压软件包
         decompression(base_package, base_bin)
-        
         # 剪切目录
         move_dir(base_bin)
 
