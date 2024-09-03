@@ -56,7 +56,7 @@ class Config:
         ''' 获取指定软件的版本 '''
         return self.get_attribute('version')
 
-    def get_install(self):
+    def get_library(self):
         ''' 获取指定软件的依赖包 '''
         return self.get_attribute('install')
 
