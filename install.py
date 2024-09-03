@@ -110,7 +110,7 @@ def main():
             print(config.app, config.version)
             # 移动目录
             move_dir(config)
-        elif config.app == "python":
+        elif config.app == "python" or config.app == "nginx":
             print('执行')
             print(config.app, config.version)
             # 编译软件
