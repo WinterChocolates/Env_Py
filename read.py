@@ -13,6 +13,7 @@ class Config:
         ''' 获取所有软件及其版本 '''
         if self.config:
             print("========================================")
+            print("===========软件版本可以随便输入===========")
             for app in self.config:
                 self.app = app
                 name = self.get_name()
